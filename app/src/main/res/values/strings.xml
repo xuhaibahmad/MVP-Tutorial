@@ -1,0 +1,6 @@
+<resources>
+    <!--TODO Change Application Name-->
+    <string name="app_name">Android Template</string>
+    <string name="title_activity_main">Hello World!</string>
+    <string name="placeholder_action_message">Replace with your own action</string>
+</resources>
