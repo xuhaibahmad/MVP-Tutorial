@@ -1,6 +1,7 @@
 package com.zuhaibahmad.template.usecases.main;
 
-import com.zuhaibahmad.template.MyApp;
+import android.content.Context;
+
 import com.zuhaibahmad.template.R;
 
 /**
@@ -9,27 +10,39 @@ import com.zuhaibahmad.template.R;
  * Presenter for main activity
  */
 
-public class MainPresenter implements ContractMain.Presenter {
+class MainPresenter implements ContractMain.Presenter {
 
 	private final ContractMain.View mView;
-	private final MainActivity mActivity;
-	private final MyApp mApplication;
+	private final Context mContext;
 
-	public MainPresenter(ContractMain.View view) {
+	MainPresenter(ContractMain.View view, Context context) {
 		mView = view;
-		mActivity = (MainActivity) mView;
-
-		mApplication = (MyApp) mActivity.getApplicationContext();
+		mContext = context;
 	}
 
 	@Override
 	public void start() {
-		MyApp.checkPermissions(mActivity);
+		// Do your initialization work here
 	}
 
 	@Override
-	public void onAction() {
-		mView.displayMessage(mActivity.getString(R.string.placeholder_action_message));
+	public void performAddition(String numberOne, String numberTwo) {
+
+		if (isEmptyInput(numberOne, numberTwo)) {
+			// Display error message if any of the inputs is empty
+			mView.displayMessage(mContext.getString(R.string.error_empty_input));
+		} else {
+			// Compute and pass the result to view for display
+			final int firstNumber = Integer.parseInt(numberOne);
+			final int secondNumber = Integer.parseInt(numberTwo);
+
+			final int result = firstNumber + secondNumber;
+			mView.displayResult(result);
+		}
 	}
 
+	@Override
+	public boolean isEmptyInput(String numOne, String numTwo) {
+		return numOne == null || numOne.length() == 0 || numTwo == null || numTwo.length() == 0;
+	}
 }

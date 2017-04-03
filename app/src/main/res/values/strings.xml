@@ -1,6 +1,11 @@
 <resources>
-    <!--TODO Change Application Name-->
-    <string name="app_name">Android Template</string>
-    <string name="title_activity_main">Hello World!</string>
-    <string name="placeholder_action_message">Replace with your own action</string>
+    <string name="app_name">MVP Tutorial</string>
+    <string name="title_activity_main">@string/app_name</string>
+    <string name="number_one">Num One</string>
+    <string name="number_two">Num Two</string>
+    <string name="plus">+</string>
+    <string name="equals">=</string>
+    <string name="question_mark">\?</string>
+    <string name="add">Add</string>
+    <string name="error_empty_input">Please Provide Both Numbers!</string>
 </resources>

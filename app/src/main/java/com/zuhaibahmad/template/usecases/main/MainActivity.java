@@ -5,7 +5,8 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.zuhaibahmad.template.R;
 
@@ -18,6 +19,9 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
 	// @formatter:off
 	@BindView(R.id.toolbar)				Toolbar 				mToolbar;
 	@BindView(R.id.container)			CoordinatorLayout 		mContainer;
+	@BindView(R.id.numberOneEditText) 	EditText 				mNumberOneEditText;
+	@BindView(R.id.numberTwoEditText) 	EditText 				mNumberTwoEditText;
+	@BindView(R.id.resultTextView)		TextView 				mResultTextView;
 	// @formatter:on
 
 	private ContractMain.Presenter mPresenter;
@@ -29,13 +33,8 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
 		ButterKnife.bind(this);
 		setSupportActionBar(mToolbar);
 
-		mPresenter = new MainPresenter(this);
+		mPresenter = new MainPresenter(this, this);
 		mPresenter.start();
-	}
-
-	@OnClick(R.id.fab)
-	public void onFloatingActionButtonClick(View view){
-		mPresenter.onAction();
 	}
 
 	@Override
@@ -51,5 +50,18 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
 	@Override
 	public ContractMain.Presenter getPresenter() {
 		return mPresenter;
+	}
+
+	@OnClick(R.id.addButton)
+	public void onAddButtonClicked() {
+		final String numberOne = mNumberOneEditText.getText().toString();
+		final String numberTwo = mNumberTwoEditText.getText().toString();
+
+		mPresenter.performAddition(numberOne, numberTwo);
+	}
+
+	@Override
+	public void displayResult(int result) {
+		mResultTextView.setText(String.valueOf(result));
 	}
 }

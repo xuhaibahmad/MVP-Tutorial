@@ -10,11 +10,16 @@ import com.zuhaibahmad.template.usecases.BaseView;
  */
 
 public interface ContractMain {
+
 	interface View extends BaseView<Presenter> {
 		void displayMessage(String text);
+
+		void displayResult(int result);
 	}
 
 	interface Presenter extends BasePresenter {
-		void onAction();
+		void performAddition(String numberOne, String numberTwo);
+
+		boolean isEmptyInput(String numOne, String numTwo);
 	}
 }

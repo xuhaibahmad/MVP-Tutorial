@@ -5,8 +5,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.zuhaibahmad.template.usecases.main.MainActivity"
     tools:showIn="@layout/activity_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:gravity="center"
+            android:id="@+id/numberOneEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/number_one"
+            android:padding="@dimen/item_margin"
+            android:inputType="numberSigned"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus"
+            android:padding="@dimen/item_margin"/>
+
+        <EditText
+            android:gravity="center"
+            android:id="@+id/numberTwoEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/number_two"
+            android:padding="@dimen/item_margin"
+            android:inputType="numberSigned"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/equals"
+            android:padding="@dimen/item_margin"/>
+
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question_mark"
+            android:padding="@dimen/item_margin"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add"
+        android:textColor="@color/textColorPrimary"
+        android:background="@color/colorAccent"
+        android:layout_margin="@dimen/item_margin"/>
 
 </LinearLayout>
